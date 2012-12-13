@@ -92,7 +92,7 @@ Equation* e;
 
 
 
-// x^2 + 2x + 1 = 0 をテスト
+// x^2 + 2x + 2 = 0 をテスト
 // 虚数解 2つの場合。
 - (void)test4
 {
@@ -103,6 +103,59 @@ Equation* e;
     STAssertEqualsWithAccuracy(1.0, [e imaginary1], 0.00001, @"imaginary1 error");
     STAssertEqualsWithAccuracy(-1.0, [e imaginary2], 0.00001, @"imaginary2 error");
 }
+
+//課題2
+//テストコードを３つ追加します
+
+// x^2 + 5x + 6 = 0 をテスト
+// 実数解 2つの場合。
+- (void)test5
+{
+    e = [[Equation alloc] initWithA:1 b:5 c:6];
+    
+    STAssertEqualsWithAccuracy(-2.0, [e real1], 0.00001, @"real1 error");
+    STAssertEqualsWithAccuracy(-3.0, [e real2], 0.00001, @"real2 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary1], 0.00001, @"imaginary1 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary2], 0.00001, @"imaginary2 error");
+}
+
+// x^2 + 4x + 4 = 0 をテスト
+// 実数解1つ(重解)の場合
+- (void)test6
+{
+    e = [[Equation alloc] initWithA:1 b:4 c:2];
+    
+    STAssertEqualsWithAccuracy(-2.0, [e real1], 0.00001, @"real1 error");
+    STAssertEqualsWithAccuracy(-2.0, [e real2], 0.00001, @"real2 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary1], 0.00001, @"imaginary1 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary2], 0.00001, @"imaginary2 error");
+}
+
+// x^2 + 2x + 5 = 0 をテスト
+// 虚数解 2つの場合。
+- (void)test7
+{
+    e = [[Equation alloc] initWithA:1 b:2 c:5];
+    
+    STAssertEqualsWithAccuracy(-1.0, [e real1], 0.00001, @"real1 error");
+    STAssertEqualsWithAccuracy(-1.0, [e real2], 0.00001, @"real2 error");
+    STAssertEqualsWithAccuracy(2.0, [e imaginary1], 0.00001, @"imaginary1 error");
+    STAssertEqualsWithAccuracy(-2.0, [e imaginary2], 0.00001, @"imaginary2 error");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ソフトウェアテストは同値クラスではないものを網羅的に行ったほうがいいです。
 // 2次方程式の解の場合，実数解2つ，重解と来たので，次は虚数解2つでしょうね。
